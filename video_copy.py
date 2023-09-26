@@ -17,17 +17,17 @@ def process_video(source, video_fps) -> None:
 
     print_video_info(source, video_info)
 
-    with sv.VideoSink(target_path=target, video_info=video_info, fourcc="H264") as sink:
+    with sv.VideoSink(target_path=target, video_info=video_info) as sink:
         for frame in tqdm(frame_generator, total=video_info.total_frames, unit='frames'):
             sink.write_frame(frame=frame)
 
-            cv2.namedWindow('output', cv2.WINDOW_KEEPRATIO)
-            cv2.imshow('output', frame)
-            cv2.resizeWindow('output', 1280, 720)
+            # cv2.namedWindow('output', cv2.WINDOW_KEEPRATIO)
+            # cv2.imshow('output', frame)
+            # cv2.resizeWindow('output', 1280, 720)
             
-            # Stop if Esc key is pressed
-            if cv2.waitKey(1) & 0xFF == 27:
-                break
+            # # Stop if Esc key is pressed
+            # if cv2.waitKey(1) & 0xFF == 27:
+            #     break
 
 
 if __name__ == "__main__":
